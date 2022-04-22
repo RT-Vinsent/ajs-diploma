@@ -1,5 +1,7 @@
 # `!РЕШЕНО! версия 1.0`
 
+# https://rt-vinsent.github.io/ajs-diploma/
+
 # AJS. Retro Game
 
 ###### tags: `netology` `advanced js`
