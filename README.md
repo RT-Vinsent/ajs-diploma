@@ -1,3 +1,5 @@
+# `!РЕШЕНО! версия 1.0`
+
 # AJS. Retro Game
 
 ###### tags: `netology` `advanced js`

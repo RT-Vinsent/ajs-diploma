@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import { calcHealthLevel, calcTileType } from './utils';
+import { calcHealthLevel, calcTileType } from '../modules/utils';
 
 export default class GamePlay {
   constructor() {
@@ -13,6 +13,7 @@ export default class GamePlay {
     this.newGameListeners = [];
     this.saveGameListeners = [];
     this.loadGameListeners = [];
+    this.unlockGameListeners = [];
   }
 
   bindToDOM(container) {
@@ -35,6 +36,7 @@ export default class GamePlay {
         <button data-id="action-restart" class="btn">New Game</button>
         <button data-id="action-save" class="btn">Save Game</button>
         <button data-id="action-load" class="btn">Load Game</button>
+        <button data-id="action-unlock" class="btn">Time Killer</button>
       </div>
       <div class="board-container">
         <div data-id="board" class="board"></div>
@@ -44,10 +46,12 @@ export default class GamePlay {
     this.newGameEl = this.container.querySelector('[data-id=action-restart]');
     this.saveGameEl = this.container.querySelector('[data-id=action-save]');
     this.loadGameEl = this.container.querySelector('[data-id=action-load]');
+    this.unlockGameEl = this.container.querySelector('[data-id=action-unlock]');
 
     this.newGameEl.addEventListener('click', (event) => this.onNewGameClick(event));
     this.saveGameEl.addEventListener('click', (event) => this.onSaveGameClick(event));
     this.loadGameEl.addEventListener('click', (event) => this.onLoadGameClick(event));
+    this.unlockGameEl.addEventListener('click', (event) => this.onUnlockGameClick(event));
 
     this.boardEl = this.container.querySelector('[data-id=board]');
 
@@ -146,6 +150,15 @@ export default class GamePlay {
     this.loadGameListeners.push(callback);
   }
 
+  /**
+   * Add listener to "unlock Game" button click
+   *
+   * @param callback
+   */
+  addUnlockGameListener(callback) {
+    this.unlockGameListeners.push(callback);
+  }
+
   onCellEnter(event) {
     event.preventDefault();
     const index = this.cells.indexOf(event.currentTarget);
@@ -176,6 +189,11 @@ export default class GamePlay {
   onLoadGameClick(event) {
     event.preventDefault();
     this.loadGameListeners.forEach((o) => o.call(null));
+  }
+
+  onUnlockGameClick(event) {
+    event.preventDefault();
+    this.unlockGameListeners.forEach((o) => o.call(null));
   }
 
   static showError(message) {
