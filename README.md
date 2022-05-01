@@ -2,6 +2,8 @@
 
 # https://rt-vinsent.github.io/ajs-diploma/
 
+[![Build status](https://ci.appveyor.com/api/projects/status/m7074abjyn9xtamg?svg=true)](https://ci.appveyor.com/project/RT-Vinsent/ajs-diploma)
+
 # AJS. Retro Game
 
 ###### tags: `netology` `advanced js`
