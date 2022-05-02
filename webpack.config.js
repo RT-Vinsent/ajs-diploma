@@ -10,7 +10,12 @@ module.exports = {
   },
   // devtool: 'inline-source-map', // карты кода для отладки
   devServer: {
-    contentBase: './dist', // папка из которой будет брать контент сервер разработки
+    // contentBase: './dist', // папка из которой будет брать контент сервер разработки
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    compress: true,
+    port: 9000,
   },
 
   // правила преобразования
