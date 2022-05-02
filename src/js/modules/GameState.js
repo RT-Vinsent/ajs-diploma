@@ -90,18 +90,27 @@ export default class GameState {
 
   static from(object) {
     // TODO: create object
-    if (typeof object === 'object') {
-      const newObject = {
-        theme: object.theme, // тема поля
-        positionPlayer: object.positionPlayer, // позиции игрока
-        positionBot: object.positionBot, // массив с позициями бота
-        turnPlayer: object.turnPlayer, // ход игрока Истина или Ложь
-        select: object.select, // выбранный герой игрока
-        level: object.level, // уровень игры.
-        score: object.score, // баллы за игру
-        timeKiller: object.timeKiller, // Ограничение на количество уровней игры
-      };
-      return newObject;
+    if (object && Object.keys(object).length !== 0) {
+      return object;
+
+      /**
+       * Это нужно было,
+       * что бы свойство teamPlayer и teamBot
+       * которые генерируется заново при загрузке игры,
+       * не хранилось зря в localStorage.
+       */
+
+      // const newObject = {
+      //   theme: object.theme, // тема поля
+      //   positionPlayer: object.positionPlayer, // позиции игрока
+      //   positionBot: object.positionBot, // массив с позициями бота
+      //   turnPlayer: object.turnPlayer, // ход игрока Истина или Ложь
+      //   select: object.select, // выбранный герой игрока
+      //   level: object.level, // уровень игры.
+      //   score: object.score, // баллы за игру
+      //   timeKiller: object.timeKiller, // Ограничение на количество уровней игры
+      // };
+      // return newObject;
     }
     return null;
   }
